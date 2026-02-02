@@ -7,7 +7,7 @@
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            background: linear-gradient(135deg, #ff1e56, #ff4b2b, #c31432);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -70,7 +70,16 @@
     <div class="message" id="message">
         💖 Good decision, dear 💖  
         <br><br>
-        Advance Happy Valentine’s Day, my love 💕
+        (You had no other option anyway 😜) 
+        
+        Advance Happy Valentine’s Day
+
+        <img 
+    id="yesImage" 
+    src="cute.png" 
+    alt="Valentine Image"
+    style="display:none; width:250px; margin-top:20px; border-radius:15px;"
+>
     </div>
 </div>
 
@@ -79,6 +88,7 @@
     const yesBtn = document.getElementById("yesBtn");
     const message = document.getElementById("message");
     const question = document.getElementById("question");
+    const yesImage = document.getElementById("yesImage");
 
     noBtn.addEventListener("mouseover", () => {
         const x = Math.random() * (window.innerWidth - 100);
@@ -87,13 +97,16 @@
         noBtn.style.top = `${y}px`;
     });
 
-    yesBtn.addEventListener("click", () => {
-        question.style.display = "none";
-        noBtn.style.display = "none";
-        yesBtn.style.display = "none";
-        message.style.display = "block";
-    });
+   yesBtn.addEventListener("click", () => {
+    question.style.display = "none";
+    noBtn.style.display = "none";
+    yesBtn.style.display = "none";
+    message.style.display = "block";
+    yesImage.style.display = "block"; // show image
+});
+
 </script>
 
 </body>
 </html>
+
