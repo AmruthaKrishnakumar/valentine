@@ -88,7 +88,6 @@
     const question = document.getElementById("question");
     const bgMusic = document.getElementById("bgMusic");
 
-    // Move NO button
     noBtn.addEventListener("mouseover", () => {
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
         const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
@@ -96,15 +95,10 @@
         noBtn.style.top = `${y}px`;
     });
 
-    // YES click → unlock + play music
-    yesBtn.addEventListener("click", async () => {
-        try {
-            bgMusic.muted = false;
+    yesBtn.addEventListener("click", () => {
+        if (bgMusic) {
             bgMusic.currentTime = 0;
-            await bgMusic.play();
-            console.log("Music started");
-        } catch (err) {
-            console.log("Audio blocked:", err);
+            bgMusic.play().catch(() => {});
         }
 
         question.style.display = "none";
@@ -115,5 +109,7 @@
 </script>
 
 
+
 </body>
 </html>
+
