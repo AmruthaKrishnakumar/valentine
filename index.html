@@ -5,15 +5,15 @@
     <title>Be My Valentine ❤️</title>
     <style>
         body {
-    margin: 0;
-    background: linear-gradient(135deg, #ff1e56, #ff4b2b, #c31432);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-}
-
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
 
         .container {
             text-align: center;
@@ -45,6 +45,7 @@
             background-color: #e74c3c;
             color: white;
             position: fixed;
+            transition: left 0.2s ease, top 0.2s ease;
         }
 
         .buttons {
@@ -60,6 +61,11 @@
 </head>
 <body>
 
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
     <h1 id="question">Will you be my Valentine? 💘</h1>
 
@@ -69,20 +75,9 @@
     </div>
 
     <div class="message" id="message">
-     Good decision!!!!!  
-    <br><br>
-    (You had no other option anyway 😜)
-    <br><br>
-    Advance Happy Valentine’s Day 
-</div>
-
-<img 
-    id="yesImage" 
-    src="yes.jpg"
-    alt="Valentine Image"
-    style="display:none; width:250px; margin-top:20px; border-radius:15px;"
->
-
+        💖 Good decision, dear 💖  
+        <br><br>
+        Advance Happy Valentine’s Day, my love 💕
     </div>
 </div>
 
@@ -91,29 +86,38 @@
     const yesBtn = document.getElementById("yesBtn");
     const message = document.getElementById("message");
     const question = document.getElementById("question");
-    const yesImage = document.getElementById("yesImage");
+    const bgMusic = document.getElementById("bgMusic");
 
+    // Move NO button
     noBtn.addEventListener("mouseover", () => {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
         noBtn.style.left = `${x}px`;
         noBtn.style.top = `${y}px`;
     });
 
-   yesBtn.addEventListener("click", () => {
+    // YES click → unlock + play music
+    yesBtn.addEventListener("click", () => {
+
+    // Try playing music safely
+    if (bgMusic) {
+        bgMusic.muted = false;
+        bgMusic.currentTime = 0;
+
+        bgMusic.play().catch(() => {
+            console.log("Music blocked or missing");
+        });
+    }
+
+    // ALWAYS update screen
     question.style.display = "none";
     noBtn.style.display = "none";
     yesBtn.style.display = "none";
     message.style.display = "block";
-    yesImage.style.display = "block"; // show image
 });
 
 </script>
 
+
 </body>
 </html>
-
-
-
-
-
