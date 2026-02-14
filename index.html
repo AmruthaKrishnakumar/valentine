@@ -7,7 +7,7 @@
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            background: linear-gradient(135deg, #001f3f, #003366, #000080);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -75,10 +75,13 @@
     </div>
 
     <div class="message" id="message">
-        💖 Good decision, dear 💖  
+        Good decision  
         <br><br>
-        Advance Happy Valentine’s Day, my love 💕
+        Happy Valentine’s Day VAVEEEEEEEE 💕
     </div>
+
+    <img id="img1" src="img1.png" style="display:none; width:200px; margin-top:20px; border-radius:15px;">
+
 </div>
 
 <script>
@@ -87,7 +90,8 @@
     const message = document.getElementById("message");
     const question = document.getElementById("question");
     const bgMusic = document.getElementById("bgMusic");
-
+    const img1 = document.getElementById("img1");
+    
     // Move NO button
     noBtn.addEventListener("mouseover", () => {
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
@@ -114,6 +118,7 @@
     noBtn.style.display = "none";
     yesBtn.style.display = "none";
     message.style.display = "block";
+    img1.style.display = "block";
 });
 
 </script>
@@ -121,4 +126,5 @@
 
 </body>
 </html>
+
 
